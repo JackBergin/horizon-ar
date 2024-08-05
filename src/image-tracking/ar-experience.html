@@ -39,7 +39,7 @@
       <div id="loading-overlay" class="loading-overlay">
         Loading...
       </div>
-      <a-scene mindar-image="imageTargetSrc: ./assets/shirt/targets.mind; showStats: true;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" loading-screen="enabled: false">
+      <a-scene mindar-image="imageTargetSrc: ./assets/shirt/targets.mind; showStats: false;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" loading-screen="enabled: false">
         <a-assets>
           <img id="shirt" src="./assets/shirt/card.png" />
           <a-asset-item id="avatarModel" src="./assets/shirt/targets.gltf"></a-asset-item>
@@ -78,7 +78,7 @@
 
         clickableModel.addEventListener("click", event => {
           console.log("clicked...");
-          window.location.href = 'https://example.com';
+          window.location.href = 'https://rnbstellar.myshopify.com/collections/all';
         });
 
         exampleTarget.addEventListener("targetFound", event => {

@@ -477,10 +477,10 @@
   ],
   "images": [
     {
-      "uri": "textures/Wool_FRONT_6085425_normal.png"
+      "uri": "Wool_FRONT_6085425_normal.png"
     },
     {
-      "uri": "textures/Cotton_Oxford_FRONT_6085305_baseColor.jpeg"
+      "uri": "Cotton_Oxford_FRONT_6085305_baseColor.jpeg"
     }
   ],
   "materials": [
