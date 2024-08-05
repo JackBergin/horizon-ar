@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite --config vite.config.dev.js --host",
     "watch": "vite build --watch --config vite.config.dev.js",
-    "build-dev": "vite build --config vite.config.dev.js",
-    "build": "vite build --config vite.config.prod.js"
+    "build": "vite build --config vite.config.prod.js",
+    "serve": "serve dist"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -47,6 +47,8 @@
     "src/"
   ],
   "devDependencies": {
-    "vite": "^5.0.11"
+    "vite": "^5.0.11",
+    "vite-plugin-static-copy": "^1.0.6",
+    "serve": "^14.0.1"
   }
 }

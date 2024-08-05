@@ -1,71 +1,26 @@
-import {defineConfig,build} from 'vite'
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+import path from 'path';
+import fs from 'fs';
 
-const outDir = 'dist'
+const topLevelFiles = fs.readdirSync(path.resolve(__dirname)).filter(file => 
+  file !== 'node_modules' && file !== 'dist' && file !== 'vite.config.prod.js'
+);
 
-/** @type {import('vite').UserConfig} */
-const moduleConfig= defineConfig({
-    mode: 'production',
-    publicDir:false,
-    base:'./',
-    build: {
-        outDir:outDir,
-        emptyOutDir:false,
-        copyPublicDir:false,
-        lib: {
-            fileName:"[name].prod",
-            entry:'index.js',
-            formats:["es"],
-        },
-        rollupOptions:{
-            external:(id)=>(id==='three'||id.includes('three/examples/jsm/')||id.includes('three/addons/')),
-            input:{
-                'mindar-image': './src/image-target/index.js',
-                'mindar-image-three': './src/image-target/three.js',
-            }
-        }
-    },
-    resolve:{
-        alias:{
-            'three/addons/':'three/examples/jsm/'
-        }
-    }
+export default defineConfig({
+  root: '.', // Specify the root directory of your project
+  build: {
+    outDir: 'dist', // Output directory for the build
+  },
+  plugins: [
+    viteStaticCopy({
+      targets: topLevelFiles.map(file => ({
+        src: file,
+        dest: ''
+      }))
+    }),
+  ],
+  server: {
+    open: true, // Open the app in the browser on server start
+  },
 });
-/** @type {import('vite').UserConfig} */
-const imageAframeConfig=defineConfig({
-    mode: 'production',
-    build: {
-        outDir: outDir,
-        emptyOutDir:false,
-        lib: {
-            name:"MINDAR",
-            fileName:"[name].prod",
-            entry:'index.js',
-            formats:['iife'],
-
-        },
-        rollupOptions:{
-            input:{
-                'mindar-image-aframe': './src/image-target/aframe.js'
-            }
-        }
-    }
-})
-
-export default defineConfig(async ({ command, mode }) => {
-    await fs.rm(outDir,{recursive:true,force:true});
-    if (command === 'build') {
-        await build(imageAframeConfig);
-        const files=await fs.readdir(outDir);
-        //rename the aframe builds
-        await Promise.all(files.map(async (filename)=>{
-            if(filename.includes(".iife.js")){
-                const newName=filename.replace(".iife.js",".js");
-                console.log(filename,"->",newName)
-                await fs.rename(path.join(outDir,filename),path.join(outDir,newName));
-            }
-        }));
-    }
-    return moduleConfig
-  })
