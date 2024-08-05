@@ -16,12 +16,30 @@
         width: 100%;
         height: 100%;
       }
+      .loading-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('./assets/shirt/logo.png') repeat; /* Replace with your image path */
+        background-size: 150px 150px; /* Adjust the scale here */
+        color: white; /* Customize text color */
+        z-index: 999;
+        font-size: 24px; /* Customize text size */
+      }
     </style>
 </head>
 
 <body>
     <div class="container">
-      <a-scene mindar-image="imageTargetSrc: ./assets/shirt/targets.mind; showStats: true;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <div id="loading-overlay" class="loading-overlay">
+        Loading...
+      </div>
+      <a-scene mindar-image="imageTargetSrc: ./assets/shirt/targets.mind; showStats: true;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" loading-screen="enabled: false">
         <a-assets>
           <img id="shirt" src="./assets/shirt/card.png" />
           <a-asset-item id="avatarModel" src="./assets/shirt/targets.gltf"></a-asset-item>
@@ -46,18 +64,21 @@
         const arSystem = sceneEl.systems["mindar-image-system"];
         const exampleTarget = document.querySelector('#example-target');
         const clickableModel = document.querySelector('#clickableModel');
+        const loadingOverlay = document.getElementById('loading-overlay');
 
         sceneEl.addEventListener("arReady", (event) => {
           console.log("AR Ready");
+          loadingOverlay.style.display = 'none';
         });
 
         sceneEl.addEventListener("arError", (event) => {
           console.log("AR Error: ", event);
+          loadingOverlay.style.display = 'none';
         });
 
         clickableModel.addEventListener("click", event => {
           console.log("clicked...");
-          window.location.href = 'https://rnbstellar.myshopify.com/';
+          window.location.href = 'https://example.com';
         });
 
         exampleTarget.addEventListener("targetFound", event => {
