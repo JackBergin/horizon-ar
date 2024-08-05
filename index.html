@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzUiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJwYWRkaW5nLXJpZ2h0OiAxcmVtOyI+CiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI1IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMzAiIHkxPSI3MCIgeDI9IjcwIiB5Mj0iNzAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNSIvPgo8L3N2Zz4=">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, rgba(119, 48, 213, 0.1), rgba(119, 48, 213, 0.2), rgba(119, 48, 213, 0.15), rgba(119, 48, 213, 0.1));
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .container::-webkit-scrollbar {
+            display: none;  /* Safari and Chrome */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #7730d5;
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px;
+            background-color: transparent;
+            margin-top: 50px;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px; /* Reduced margin */
+        }
+
+        .button-section {
+            text-align: center;
+        }
+
+        .button-section a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: white;
+            background-color: #7730d5;
+            padding: 15px 30px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .button-section a:hover {
+            background-color: #b78ce9;
+        }
+
+        .features {
+            text-align: center;
+            padding: 30px; /* Increased padding for more space above the features section */
+        }
+
+        .features h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .features .feature-list {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .features .feature-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .features .feature-item h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .features .feature-item p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 40px 10px;
+                margin-top: 80px;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .button-section a {
+                padding: 10px 20px;
+            }
+
+            .features {
+                padding: 30px 10px 70px 10px; /* Adjusted bottom padding for mobile */
+            }
+
+            .features .feature-item {
+                padding: 15px;
+            }
+
+            .features .feature-item h4 {
+                font-size: 1.2em;
+            }
+
+            .features .feature-item p {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+
+            nav a {
+                font-size: 0.9em;
+            }
+
+            .hero {
+                padding: 30px 10px;
+                margin-top: 70px;
+            }
+
+            .hero h2 {
+                font-size: 1.5em;
+            }
+
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .button-section a {
+                padding: 8px 15px;
+            }
+
+            .features {
+                padding: 20px 10px 60px 10px; /* Adjusted bottom padding for mobile */
+            }
+
+            .features .feature-item {
+                padding: 10px;
+            }
+
+            .features .feature-item h4 {
+                font-size: 1em;
+            }
+
+            .features .feature-item p {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="padding-right: 1rem;">
+                <circle cx="50" cy="50" r="40" stroke="white" stroke-width="5" fill="none"/>
+                <line x1="30" y1="70" x2="70" y2="70" stroke="white" stroke-width="5"/>
+            </svg>
+            <h1>Horizon</h1>
+        </div>
+        <nav>
+            <a href="#" onclick="navigateHome()">Home</a>
+            <a href="src/site-pages/pricing.html">Pricing</a>
+            <a href="src/site-pages/contact.html">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="hero">
+            <h2>Welcome to Horizon</h2>
+            <p>Explore our powerful tools for tracking and analyzing images in real-time. Discover the potential of augmented reality for marketing and engagement.</p>
+            <div class="button-section" style="padding-top:1rem;">
+                <a href="src/image-tracking/ar-experience.html">AR Experience</a>
+                <a href="src/image-tracking/compile.html">Compile AR Experience</a>
+            </div>
+        </div>
+        <section class="features">
+            <h3>Features</h3>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>Real-time Tracking</h4>
+                    <p>Track images and objects in real-time with high accuracy.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Augmented Reality Integration</h4>
+                    <p>Seamlessly integrate AR experiences into your marketing strategies.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Technology Driven Marketing</h4>
+                    <p>Bring brand awareness to the next level by getting into the AR space.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 Horizon. All rights reserved.
+    </footer>
+
+    <script>
+        function navigateHome() {
+            history.pushState({}, '', '/');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

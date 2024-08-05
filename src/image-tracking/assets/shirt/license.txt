@@ -1,0 +1,11 @@
+Model Information:
+* title:	T-Shirt (Metahuman Compatible)
+* source:	https://sketchfab.com/3d-models/t-shirt-metahuman-compatible-e8f460fd57dd41de810c1fbea68cce8f
+* author:	kostea (https://sketchfab.com/paladiiconstantin.1)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "T-Shirt (Metahuman Compatible)" (https://sketchfab.com/3d-models/t-shirt-metahuman-compatible-e8f460fd57dd41de810c1fbea68cce8f) by kostea (https://sketchfab.com/paladiiconstantin.1) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

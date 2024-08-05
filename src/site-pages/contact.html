@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Jack Bergin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle at top left, rgba(119, 48, 213, 0.1), rgba(119, 48, 213, 0.2), rgba(119, 48, 213, 0.15), rgba(119, 48, 213, 0.1));
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #7730d5;
+            color: white;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            box-sizing: border-box;
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+        header .logo img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+        header h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .contact-card h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .contact-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+        }
+        .contact-item a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="padding-right: 1rem;">
+                <circle cx="50" cy="50" r="40" stroke="white" stroke-width="5" fill="none"/>
+                <line x1="30" y1="70" x2="70" y2="70" stroke="white" stroke-width="5"/>
+            </svg>
+            <h1>Horizon</h1>
+        </div>
+        <nav>
+            <a href="#" onclick="navigateHome()">Home</a>
+            <a href="src/site-pages/pricing.html" onclick="navigatePricing()">Pricing</a>
+            <a href="src/site-pages/contact.html">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="contact-card">
+            <h1>Contact Jack Bergin</h1>
+            <div class="contact-item">
+                <img src="../svgs/github.svg" alt="GitHub Logo">
+                <a href="https://github.com/JackBergin" target="_blank">github.com/JackBergin</a>
+            </div>
+            <div class="contact-item">
+                <img src="../svgs/linkedin.svg" alt="LinkedIn Logo">
+                <a href="https://www.linkedin.com/in/jackcbergin/" target="_blank">linkedin.com/in/jackcbergin</a>
+            </div>
+            <div class="contact-item">
+                <img src="../svgs/mail.svg" alt="Email Logo">
+                <a href="mailto:jackcbergin@gmail.com">jackcbergin@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <img src="../svgs/phone.svg" alt="Phone Logo">
+                <span>9788570807</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigateHome() {
+            history.pushState({}, '', '/');
+            window.location.href = 'index.html';
+        }
+        function navigatePricing() {
+            history.pushState({}, '', '/');
+            window.location.href = 'src/site-pages/pricing.html';
+        }
+    </script>
+</body>
+</html>
