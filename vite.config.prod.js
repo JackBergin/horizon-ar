@@ -27,11 +27,47 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  server: {
-    open: true, // Open the app in the browser on server start
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'certs/server.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'certs/server.crt')),
-    },
-  },
 });
+
+
+
+/*import { defineConfig, build } from 'vite';
+import * as fs from 'fs/promises';
+import basicSsl from '@vitejs/plugin-basic-ssl';
+
+const outDir = 'dist';
+
+const copyFiles = async () => {
+  // Copy the entire src directory to the dist directory
+  await fs.cp('src', `${outDir}/src`, { recursive: true });
+};
+
+export default defineConfig(async ({ command }) => {
+  await fs.rm(outDir, { recursive: true, force: true });
+
+  if (command === 'build') {
+    // Copy all files in the src folder to the dist folder
+    await copyFiles();
+
+    // Additional build configurations or tasks can be added here
+  }
+
+  return {
+    mode: 'production',
+    base: './',
+    plugins: [
+      basicSsl(),
+    ],
+    build: {
+      outDir: outDir,
+      emptyOutDir: false,
+      sourcemap: 'inline',
+      rollupOptions: {
+        input: {
+          'index': './index.html',
+        },
+      },
+    },
+  };
+});
+*/

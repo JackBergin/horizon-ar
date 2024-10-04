@@ -1,11 +1,11 @@
 {
-  "name": "mind-ar",
+  "name": "horizon-ar",
   "version": "1.2.5",
   "description": "web augmented reality framework",
   "main": "index.js",
   "scripts": {
-    "dev": "vite --config vite.config.dev.js --host",
-    "watch": "vite build --watch --config vite.config.dev.js",
+    "dev": "vite --config vite.config.prod.js --host",
+    "watch": "vite build --watch --config vite.config.prod.js",
     "build": "vite build --config vite.config.prod.js",
     "serve": "serve dist"
   },
@@ -13,10 +13,6 @@
     "node": ">=14.0.0"
   },
   "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hiukim/mind-ar-js"
-  },
   "keywords": [
     "web AR",
     "aframe",
@@ -26,8 +22,6 @@
     "tensorflowjs",
     "mediapipe"
   ],
-  "author": "hiukim",
-  "license": "MIT",
   "dependencies": {
     "@mediapipe/tasks-vision": "^0.10.9",
     "@msgpack/msgpack": "^2.8.0",

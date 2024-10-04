@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/16/Stats.min.js"></script>
+    <script src="../../src/image-target/aframe.js" type="module"></script>
+   
+    <style>
+      body {
+        margin: 0;
+      }
+      .container {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .loading-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('./assets/shirt/logo.png') repeat; /* Replace with your image path */
+        background-size: 150px 150px; /* Adjust the scale here */
+        color: white; /* Customize text color */
+        z-index: 999;
+        font-size: 24px; /* Customize text size */
+      }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+      <div id="loading-overlay" class="loading-overlay">
+        Loading...
+      </div>
+      <a-scene mindar-image="imageTargetSrc: ./assets/shirt/targets.mind; showStats: false;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" loading-screen="enabled: false">
+        <a-assets>
+          <img id="shirt" src="./assets/shirt/card.png" />
+          <a-asset-item id="avatarModel" src="./assets/shirt/targets.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="near: 10; far: 10000"></a-camera>
+
+        <a-entity id="example-target" mindar-image-target="targetIndex: 0">
+          <a-plane id="example-target-link" src="#shirt" position="0 0 0" height="1.75" width="1" rotation="0 0 0">
+          </a-plane>
+
+          <a-gltf-model id="clickableModel" rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel"
+            animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+          </a-gltf-model>
+        </a-entity>
+      </a-scene>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const sceneEl = document.querySelector('a-scene');
+        const arSystem = sceneEl.systems["mindar-image-system"];
+        const exampleTarget = document.querySelector('#example-target');
+        const clickableModel = document.querySelector('#clickableModel');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+        sceneEl.addEventListener("arReady", (event) => {
+          console.log("AR Ready");
+          loadingOverlay.style.display = 'none';
+        });
+
+        sceneEl.addEventListener("arError", (event) => {
+          console.log("AR Error: ", event);
+          loadingOverlay.style.display = 'none';
+        });
+
+        clickableModel.addEventListener("click", event => {
+          console.log("clicked...");
+          window.location.href = 'https://rnbstellar.myshopify.com/products/find-your-sound-acid-washed-short-sleeve';
+        });
+
+        exampleTarget.addEventListener("targetFound", event => {
+          console.log("target found");
+        });
+
+        exampleTarget.addEventListener("targetLost", event => {
+          console.log("target lost");
+        });
+
+        exampleTarget.addEventListener("targetUpdate", event => {
+          console.log("target position update");
+        });
+      });
+    </script>
+</body>
+</html>
