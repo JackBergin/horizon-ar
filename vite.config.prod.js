@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+/*import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
 import fs from 'fs';
@@ -28,10 +28,10 @@ export default defineConfig({
     },
   },
 });
+*/
 
 
-
-/*import { defineConfig, build } from 'vite';
+import { defineConfig, build } from 'vite';
 import * as fs from 'fs/promises';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
@@ -70,4 +70,3 @@ export default defineConfig(async ({ command }) => {
     },
   };
 });
-*/
